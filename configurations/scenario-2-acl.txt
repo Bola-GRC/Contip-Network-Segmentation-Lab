@@ -1,0 +1,27 @@
+! Contip Network Segmentation Lab
+! Scenario 2 - Enhanced Network Segmentation
+!
+! HR and Sales are both restricted from accessing the IT network.
+! Both departments retain access to centralized DHCP and DNS services.
+
+! HR essential services
+access-list 100 permit udp 192.168.20.0 0.0.0.255 host 192.168.10.2 eq 67
+access-list 100 permit udp 192.168.20.0 0.0.0.255 host 192.168.10.3 eq 53
+access-list 100 permit tcp 192.168.20.0 0.0.0.255 host 192.168.10.3 eq 53
+access-list 100 deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+
+! Sales essential services
+access-list 100 permit udp 192.168.30.0 0.0.0.255 host 192.168.10.2 eq 67
+access-list 100 permit udp 192.168.30.0 0.0.0.255 host 192.168.10.3 eq 53
+access-list 100 permit tcp 192.168.30.0 0.0.0.255 host 192.168.10.3 eq 53
+access-list 100 deny ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+
+access-list 100 permit ip any any
+
+interface GigabitEthernet0/1
+ ip access-group 100 in
+exit
+
+interface GigabitEthernet0/2
+ ip access-group 100 in
+exit
