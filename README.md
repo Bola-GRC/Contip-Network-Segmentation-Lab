@@ -12,7 +12,7 @@ The network consists of three departments:
 
 Each department operates on a separate subnet, while centralized DHCP and DNS services are hosted within the IT network.
 
-The project uses extended Access Control Lists (ACLs), DHCP relay, DNS, subnetting, and inter-network routing to control communication between departments.
+The project uses extended Access Control Lists (ACLs), DHCP relay, DNS, subnetting, and inter-subnet routing to control communication between departments.
 
 ## Case Study
 
@@ -23,13 +23,15 @@ The company requires each department to operate on a separate network while shar
 The initial business requirement was to restrict HR from accessing IT resources while allowing Sales to communicate with the IT department. HR still needed access to essential services such as DHCP and DNS.
 
 After implementing the original requirement, a second security scenario was introduced to demonstrate a stronger least-privilege approach.
-### Scenario 1 - Original Business Requirement
+### Policy Summary
+
+**Scenario 1 - Original Business Requirement**
 
 - HR is restricted from accessing IT resources.
 - HR is allowed to use the centralized DHCP and DNS services.
 - Sales is allowed to communicate with the IT network.
 
-### Scenario 2 - Enhanced Network Segmentation
+**Scenario 2 - Enhanced Network Segmentation**
 
 - HR is restricted from accessing IT resources.
 - Sales is also restricted from accessing IT resources.
@@ -183,11 +185,11 @@ The complete Cisco Packet Tracer lab files are available below:
 
 ## Packet Tracer Note
 
-During validation, some TCP DNS ACL entries did not persist consistently after reopening the Packet Tracer `.pkt` files.
+During validation, some TCP/53 ACL entries did not persist consistently after reopening the Cisco Packet Tracer `.pkt` files.
 
-The complete intended ACL configurations, including both UDP and TCP port 53 rules, are therefore documented separately in the `configurations` directory.
+The complete intended ACL configurations, including both UDP/53 and TCP/53 DNS rules, are therefore documented separately in the `configurations` directory.
 
-The project screenshots capture the ACLs during configuration and verification.
+The verification screenshots demonstrate the implemented access-control behavior and ACL testing performed during the lab.
 
 ## Skills Demonstrated
 
